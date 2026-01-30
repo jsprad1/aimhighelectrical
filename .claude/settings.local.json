@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd Aim High Electrical landing page\n\nComplete single-page landing site for Aim High Electrical Services \\(Aurora, CO\\).\nIncludes hero, pain points, 9 services, testimonials, about, process, FAQ,\nand CTA sections. Built with brand colors \\(#046bd2\\), responsive design,\nand optimized for Vercel deployment.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(gh repo create:*)",
+      "Bash(where:*)",
+      "Bash(where git:*)",
+      "Bash(gh:*)",
+      "Bash(powershell -Command \"Get-Command gh -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source\")",
+      "Bash(powershell -Command:*)",
+      "Bash(git config:*)",
+      "Bash(findstr:*)",
+      "Bash(vercel:*)",
+      "WebFetch(domain:aimhighelectrical.vercel.app)",
+      "Bash(dir:*)"
+    ]
+  }
+}
