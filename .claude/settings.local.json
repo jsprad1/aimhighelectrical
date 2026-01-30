@@ -14,7 +14,9 @@
       "Bash(findstr:*)",
       "Bash(vercel:*)",
       "WebFetch(domain:aimhighelectrical.vercel.app)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd project workspace structure, research docs, and agent definitions\n\nIncludes admin docs, discovery research, brand guidelines, content copy,\ndesign wireframes, and Claude agent team configuration for Aim High Electrical.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push)"
     ]
   }
 }
