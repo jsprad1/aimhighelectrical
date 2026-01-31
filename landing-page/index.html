@@ -722,102 +722,6 @@
       margin-top: 56px;
     }
 
-    /* ─── SOCIAL PROOF ─── */
-    .social-proof { background: var(--gray-50); }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .testimonial-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 32px;
-      border: 1px solid var(--gray-200);
-      box-shadow: var(--shadow-sm);
-      transition: all 0.3s ease;
-    }
-    .testimonial-card:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px);
-    }
-
-    .stars {
-      display: flex;
-      gap: 4px;
-      margin-bottom: 16px;
-      color: var(--amber);
-    }
-
-    .testimonial-card blockquote {
-      font-size: 16px;
-      line-height: 1.7;
-      color: var(--slate);
-      margin-bottom: 20px;
-      font-style: italic;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .testimonial-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--blue-light);
-      color: var(--blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 16px;
-    }
-    .testimonial-name {
-      font-weight: 600;
-      font-size: 15px;
-    }
-    .testimonial-role {
-      font-size: 13px;
-      color: var(--gray-500);
-    }
-
-    .trust-badges {
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      margin-top: 64px;
-      padding-top: 48px;
-      border-top: 1px solid var(--gray-200);
-      flex-wrap: wrap;
-    }
-    .trust-badge-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-    .trust-badge-icon {
-      width: 56px;
-      height: 56px;
-      background: var(--white);
-      border: 2px solid var(--gray-200);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--blue);
-    }
-    .trust-badge-item span {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--gray-500);
-      text-align: center;
-    }
-
     /* ─── ABOUT ─── */
     .about { background: var(--white); }
 
@@ -1297,7 +1201,6 @@
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
       .process-grid::before { display: none; }
       .process-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
     }
@@ -1319,10 +1222,7 @@
 
       .pain-grid { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
-      .testimonials-grid { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: 1fr; }
-
-      .trust-badges { gap: 24px; }
 
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; text-align: center; }
@@ -1336,6 +1236,65 @@
         width: 48px;
         height: 48px;
       }
+
+      .promo-banner { display: none; }
+    }
+
+    /* ─── SPRING PROMO BANNER ─── */
+    .promo-banner {
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: linear-gradient(135deg, var(--blue) 0%, #0a8f3c 100%);
+      color: var(--white);
+      padding: 10px 24px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .promo-banner a {
+      color: var(--white);
+      background: rgba(255,255,255,0.2);
+      padding: 4px 14px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .promo-banner a:hover {
+      background: rgba(255,255,255,0.35);
+    }
+    .promo-banner-close {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 4px;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .promo-banner-close:hover { opacity: 1; }
+    .promo-banner.hidden { display: none; }
+    body.has-promo-banner .hero { padding-top: 182px; }
+    body.has-promo-banner .mobile-menu { top: 114px; }
+
+    @media (max-width: 768px) {
+      .promo-banner { font-size: 13px; padding: 8px 40px 8px 16px; gap: 8px; }
+      body.has-promo-banner .hero { padding-top: 200px; }
     }
   </style>
 </head>
@@ -1382,6 +1341,16 @@
       <a href="#contact" class="btn btn-primary" onclick="toggleMenu()" style="justify-content: center;">Get a Quote</a>
     </div>
   </header>
+
+  <!-- ─── SPRING 2026 PROMO BANNER ─── -->
+  <div class="promo-banner" id="promoBanner">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1m0 16v1m-8-9H3m18 0h-1m-2.636-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707"/><circle cx="12" cy="12" r="4"/></svg>
+    Spring Into Safety — Save up to $250 on electrical services through May 2026
+    <a href="spring-promo.html">View Spring Deals</a>
+    <button class="promo-banner-close" onclick="closePromoBanner()" aria-label="Close banner">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
 
   <!-- ─── HERO ─── -->
   <section class="hero">
@@ -1607,106 +1576,6 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           Schedule a Service Call
         </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── SOCIAL PROOF ─── -->
-  <section class="social-proof section" id="reviews">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Reviews</div>
-        <h2 class="section-title">What Our Customers Say</h2>
-        <p class="section-subtitle">Don't just take our word for it. Here's what homeowners across Aurora have to say.</p>
-      </div>
-
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="stars">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <blockquote>"Glen and his team upgraded our entire panel and added circuits for our new kitchen. Professional, on time, and cleaned up everything. Best electrician we've hired."</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">MR</div>
-            <div>
-              <div class="testimonial-name">Mike R.</div>
-              <div class="testimonial-role">Aurora Homeowner</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="stars">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <blockquote>"Had an EV charger installed in our garage. Glen explained everything clearly, got the permit, and finished the work ahead of schedule. Highly recommend!"</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">SL</div>
-            <div>
-              <div class="testimonial-name">Sarah L.</div>
-              <div class="testimonial-role">Centennial Homeowner</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="stars">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <blockquote>"We had some scary flickering lights and burning smell. Glen came out same day, found the issue fast, and fixed it. Saved us from a potential disaster. Thank you!"</blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">DW</div>
-            <div>
-              <div class="testimonial-name">David W.</div>
-              <div class="testimonial-role">Parker Homeowner</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="trust-badges">
-        <div class="trust-badge-item">
-          <div class="trust-badge-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <span>Veteran Owned</span>
-        </div>
-        <div class="trust-badge-item">
-          <div class="trust-badge-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <span>4.9 Stars</span>
-        </div>
-        <div class="trust-badge-item">
-          <div class="trust-badge-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <span>HomeAdvisor<br>Verified</span>
-        </div>
-        <div class="trust-badge-item">
-          <div class="trust-badge-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <span>Licensed<br>& Insured</span>
-        </div>
-        <div class="trust-badge-item">
-          <div class="trust-badge-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <span>Since 2023</span>
-        </div>
       </div>
     </div>
   </section>
@@ -2021,7 +1890,6 @@
           <h4>Company</h4>
           <ul>
             <li><a href="#about">About Us</a></li>
-            <li><a href="#reviews">Reviews</a></li>
             <li><a href="#process">Our Process</a></li>
             <li><a href="#faq">FAQ</a></li>
           </ul>
@@ -2079,6 +1947,20 @@
     // Mobile menu toggle
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // Promo banner
+    (function() {
+      if (!sessionStorage.getItem('promoBannerClosed')) {
+        document.body.classList.add('has-promo-banner');
+      } else {
+        document.getElementById('promoBanner').classList.add('hidden');
+      }
+    })();
+    function closePromoBanner() {
+      document.getElementById('promoBanner').classList.add('hidden');
+      document.body.classList.remove('has-promo-banner');
+      sessionStorage.setItem('promoBannerClosed', '1');
     }
 
     // FAQ accordion
