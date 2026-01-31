@@ -1,6 +1,7 @@
 {
   "outputDirectory": "landing-page",
   "rewrites": [
+    { "source": "/spring-promo", "destination": "/spring-promo.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
