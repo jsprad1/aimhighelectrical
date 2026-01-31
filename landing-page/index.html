@@ -1336,6 +1336,65 @@
         width: 48px;
         height: 48px;
       }
+
+      .promo-banner { display: none; }
+    }
+
+    /* ─── SPRING PROMO BANNER ─── */
+    .promo-banner {
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: linear-gradient(135deg, var(--blue) 0%, #0a8f3c 100%);
+      color: var(--white);
+      padding: 10px 24px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .promo-banner a {
+      color: var(--white);
+      background: rgba(255,255,255,0.2);
+      padding: 4px 14px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .promo-banner a:hover {
+      background: rgba(255,255,255,0.35);
+    }
+    .promo-banner-close {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 4px;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .promo-banner-close:hover { opacity: 1; }
+    .promo-banner.hidden { display: none; }
+    body.has-promo-banner .hero { padding-top: 182px; }
+    body.has-promo-banner .mobile-menu { top: 114px; }
+
+    @media (max-width: 768px) {
+      .promo-banner { font-size: 13px; padding: 8px 40px 8px 16px; gap: 8px; }
+      body.has-promo-banner .hero { padding-top: 200px; }
     }
   </style>
 </head>
@@ -1382,6 +1441,16 @@
       <a href="#contact" class="btn btn-primary" onclick="toggleMenu()" style="justify-content: center;">Get a Quote</a>
     </div>
   </header>
+
+  <!-- ─── SPRING 2026 PROMO BANNER ─── -->
+  <div class="promo-banner" id="promoBanner">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1m0 16v1m-8-9H3m18 0h-1m-2.636-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707"/><circle cx="12" cy="12" r="4"/></svg>
+    Spring Into Safety — Save up to $250 on electrical services through May 2026
+    <a href="spring-promo.html">View Spring Deals</a>
+    <button class="promo-banner-close" onclick="closePromoBanner()" aria-label="Close banner">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
 
   <!-- ─── HERO ─── -->
   <section class="hero">
@@ -2079,6 +2148,20 @@
     // Mobile menu toggle
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // Promo banner
+    (function() {
+      if (!sessionStorage.getItem('promoBannerClosed')) {
+        document.body.classList.add('has-promo-banner');
+      } else {
+        document.getElementById('promoBanner').classList.add('hidden');
+      }
+    })();
+    function closePromoBanner() {
+      document.getElementById('promoBanner').classList.add('hidden');
+      document.body.classList.remove('has-promo-banner');
+      sessionStorage.setItem('promoBannerClosed', '1');
     }
 
     // FAQ accordion
